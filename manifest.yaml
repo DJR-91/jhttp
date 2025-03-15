@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-kubernetes
+  labels:
+    app: java-kubernetes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-kubernetes
+  template:
+    metadata:
+      labels:
+        app: java-kubernetes
+    spec:
+      containers:
+      - name: java-kubernetes
+        image: djreed1991/kubernetes:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "256Mi"
+          requests:
+            cpu: "0.2"
+            memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-kubernetes-service
+spec:
+  selector:
+    app: java-kubernetes
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
