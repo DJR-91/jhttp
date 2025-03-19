@@ -6,8 +6,7 @@ JHTTP is a simple HTTP server written in the Java 8.
 ## Requirements
 
 * Java 8 SDK
-* Maven*
-* password=123test
+* Maven
 
 ## Building
 
